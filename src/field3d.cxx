@@ -45,7 +45,7 @@ Field3d<TF>::~Field3d()
 }
 
 template<typename TF>
-int Field3d<TF>::init()
+int Field3d<TF>::init(const bool init_at_zero)
 {
     const Grid_data<TF>& gd = grid.get_grid_data();
 
@@ -80,21 +80,23 @@ int Field3d<TF>::init()
     if (nerror)
         throw std::runtime_error("In Field3d::init");
 
+    const TF init_value = init_at_zero ? TF(0) : TF(1e9);
+
     // set all values to zero
     for (int n=0; n<gd.ncells; ++n)
-        fld[n] = 0.;
+        fld[n] = init_value;
 
     for (int n=0; n<gd.kcells; ++n)
-        fld_mean[n] = 0.;
+        fld_mean[n] = init_value;
 
     for (int n=0; n<gd.ijcells; ++n)
     {
-        fld_bot [n] = 0.;
-        fld_top [n] = 0.;
-        grad_bot[n] = 0.;
-        grad_top[n] = 0.;
-        flux_bot[n] = 0.;
-        flux_top[n] = 0.;
+        fld_bot [n] = init_value;
+        fld_top [n] = init_value;
+        grad_bot[n] = init_value;
+        grad_top[n] = init_value;
+        flux_bot[n] = init_value;
+        flux_top[n] = init_value;
     }
 
     return 0;

@@ -286,23 +286,28 @@ void Fields<TF>::init(Input& input, Dump<TF>& dump, Cross<TF>& cross, const Sim_
     // ALLOCATE ALL THE FIELDS
     // allocate the prognostic velocity fields
     for (auto& it : mp)
-        nerror += it.second->init();
+    {
+        if (it.first == "w")
+            nerror += it.second->init(true);
+        else
+            nerror += it.second->init(false);
+    }
 
     // allocate the velocity tendency fields
     for (auto& it : mt)
-        nerror += it.second->init();
+        nerror += it.second->init(true);
 
     // allocate the prognostic scalar fields
     for (auto& it : sp)
-        nerror += it.second->init();
+        nerror += it.second->init(false);
 
     // allocate the scalar tendency fields
     for (auto& it : st)
-        nerror += it.second->init();
+        nerror += it.second->init(true);
 
     // allocate the diagnostic scalars
     for (auto& it : sd)
-        nerror += it.second->init();
+        nerror += it.second->init(false);
 
     // now that all classes have been able to set the minimum number of tmp fields, initialize them
     for (int i=0; i<n_tmp_fields; ++i)
@@ -310,7 +315,7 @@ void Fields<TF>::init(Input& input, Dump<TF>& dump, Cross<TF>& cross, const Sim_
 
     // allocate the tmp fields
     for (auto& tmp : atmp)
-        nerror += tmp->init();
+        nerror += tmp->init(true);
 
     master.sum(&nerror, 1);
 
@@ -464,7 +469,7 @@ std::shared_ptr<Field3d<TF>> Fields<TF>::get_tmp()
         {
             init_tmp_field();
             tmp = atmp.back();
-            tmp->init();
+            tmp->init(true);
         }
         else
             tmp = atmp.back();
@@ -750,7 +755,9 @@ namespace
                 for (int i=istart; i<iend; ++i)
                 {
                     const int ijk = i + j*jj + k*kk;
-                    data[ijk] += dataprof[k-kstart] - offset;
+
+                    //data[ijk] += dataprof[k-kstart] - offset;
+                    data[ijk] = dataprof[k-kstart] - offset;
                 }
     }
 }

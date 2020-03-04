@@ -38,7 +38,7 @@ class Field3d
         Field3d(Master&, Grid<TF>&, std::string, std::string, std::string, const std::array<int,3>&);
         ~Field3d();
 
-        int init();
+        int init(bool);
 
         // Variables at CPU.
         std::vector<TF> fld;
