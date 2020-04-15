@@ -1,0 +1,274 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Code and compilation &mdash; MicroHH 2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Getting started" href="getting_started.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> MicroHH
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="getting_started.html">Getting started</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Code and compilation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#obtaining-the-microhh-code">Obtaining the MicroHH code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compilation-of-the-code">Compilation of the code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MicroHH</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="getting_started.html">Getting started</a> &raquo;</li>
+        
+      <li>Code and compilation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/getting_started/compiling.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="code-and-compilation">
+<h1>Code and compilation<a class="headerlink" href="#code-and-compilation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>Before starting the tutorial, make sure that you meet the requirements of MicroHH. In order to compile MicroHH you need:</p>
+<ul class="simple">
+<li><p>C++ compiler</p></li>
+<li><p>FFTW3 libraries</p></li>
+<li><p>NetCDF4-C</p></li>
+<li><p>CMake</p></li>
+<li><p>MPI2/3 implementation <cite>(optional for MPI support)</cite></p></li>
+<li><p>CUDA <cite>(optional for GPU support)</cite></p></li>
+<li><p>Python + Numpy <cite>(optional for running example cases)</cite></p></li>
+<li><p>Ipython + NetCDF4 + Matplotlib <cite>(optional for plotting results example cases)</cite></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The legacy netCDF C++ and NetCDF-CXX4 libraries are no longer supported (or required), as MicroHH has its own C++ wrapper for the NetCDF4-C library.</p>
+</div>
+<p>If you are running on OSX, please install also the GNU sed (<code class="code docutils literal notranslate"><span class="pre">gnu-sed</span></code> in Homebrew, or <code class="code docutils literal notranslate"><span class="pre">gsed</span></code> in MacPorts)</p>
+</div>
+<div class="section" id="obtaining-the-microhh-code">
+<h2>Obtaining the MicroHH code<a class="headerlink" href="#obtaining-the-microhh-code" title="Permalink to this headline">¶</a></h2>
+<p>The MicroHH code is hosted at Github (<a class="reference external" href="https://github.com/microhh/microhh">https://github.com/microhh/microhh</a>). The code can either be downloaded as a ZIP file (<a class="reference external" href="https://github.com/microhh/microhh/archive/master.zip">https://github.com/microhh/microhh/archive/master.zip</a>), but if Git (version control system) is installed, the code can also be downloaded using:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/microhh/microhh.git
+</pre></div>
+</div>
+<p>The advantage of using Git is that the model can easily be updated at a later time by calling <code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> from anywhere in the MicroHH directory.</p>
+</div>
+<div class="section" id="compilation-of-the-code">
+<h2>Compilation of the code<a class="headerlink" href="#compilation-of-the-code" title="Permalink to this headline">¶</a></h2>
+<p>At the starting point of this tutorial, we assume that you are in the main directory of MicroHH. First, we will take care of the configuration file. Enter the config directory:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> config
+</pre></div>
+</div>
+<p>Here, you find a potential series of settings with the extension <code class="code docutils literal notranslate"><span class="pre">.cmake</span></code> for different systems. Check whether your system is there. If not, create a file with the correct compiler settings and the proper location for all libraries. Then, copy your system file to <code class="code docutils literal notranslate"><span class="pre">default.cmake</span></code>. Let us assume your system is Ubuntu:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cp ubuntu.cmake default.cmake
+</pre></div>
+</div>
+<p>Then, go back to the main directory and create a subdirectory with an arbitrary name in which you will compile the code. Let us assume this directory is called <code class="code docutils literal notranslate"><span class="pre">build</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ..
+mkdir build
+<span class="nb">cd</span> build
+</pre></div>
+</div>
+<p>From this directory, run <code class="code docutils literal notranslate"><span class="pre">cmake</span></code> with the suffix <code class="code docutils literal notranslate"><span class="pre">..</span></code> to point to the parent directory where the CMakeLists.txt is found. This builds the model without Message Passing Interface (MPI) and CUDA support.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cmake ..
+</pre></div>
+</div>
+<p>In case you prefer to enable either MPI or CUDA (at the moment, not both!), run one of the following commands instead of the previous one:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cmake .. -DUSEMPI<span class="o">=</span>TRUE
+cmake .. -DUSECUDA<span class="o">=</span>TRUE
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Once the build has been configured and you wish to change the <code class="code docutils literal notranslate"><span class="pre">USECUDA</span></code> or <code class="code docutils literal notranslate"><span class="pre">USEMPI</span></code> setting, you must delete the build directory or create an additional empty directory from which <code class="code docutils literal notranslate"><span class="pre">cmake</span></code> is run.</p>
+</div>
+<p>With the previous command you have triggered the build system and created the <code class="code docutils literal notranslate"><span class="pre">Makefile</span></code>, if the <code class="code docutils literal notranslate"><span class="pre">default.cmake</span></code> file contains the correct settings. Now, you can start the compilation of the code and create the MicroHH executable with:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>make -j <span class="m">4</span>
+</pre></div>
+</div>
+<p>Your directory should contain a file named <code class="code docutils literal notranslate"><span class="pre">microhh</span></code> now. This is the main executable.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="getting_started.html" class="btn btn-neutral float-left" title="Getting started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, MicroHH developers
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

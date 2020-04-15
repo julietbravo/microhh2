@@ -1,0 +1,17 @@
+Compiling MicroHH
+=================
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   getting_started/compiling
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
